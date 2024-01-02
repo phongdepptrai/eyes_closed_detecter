@@ -1,6 +1,7 @@
 import cv2
 import dlib
-
+import numpy as np
+import scipy
 # Sử dụng detector của dlib để nhận diện khuôn mặt
 detector = dlib.get_frontal_face_detector()
 
@@ -10,9 +11,9 @@ predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 # Hàm để xác định trạng thái mắt (mở hoặc nhắm)
 def eye_aspect_ratio(eye):
     # Tính toán tỷ lệ chiều dài và chiều rộng của mắt
-    A = distance.euclidean(eye[1], eye[5])
-    B = distance.euclidean(eye[2], eye[4])
-    C = distance.euclidean(eye[0], eye[3])
+    A = scipy.spatial.distance.euclidean(eye[1], eye[5])
+    B = scipy.spatial.distance.euclidean(eye[2], eye[4])
+    C = scipy.spatial.distance.euclidean(eye[0], eye[3])
     # Tính tỷ lệ chiều dài và chiều rộng trung bình
     ear = (A + B) / (2.0 * C)
     return ear
