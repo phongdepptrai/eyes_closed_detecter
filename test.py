@@ -2,6 +2,7 @@ import cv2
 import dlib
 import numpy as np
 import scipy
+
 # Sử dụng detector của dlib để nhận diện khuôn mặt
 detector = dlib.get_frontal_face_detector()
 
